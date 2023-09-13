@@ -3,7 +3,7 @@ from config import Config
 from flask_migrate import Migrate
 from flask.cli import FlaskGroup
 from backend.models import db  # Import db from your models module
-from backend. events import event_blueprint  # Import the event Blueprint
+from backend.events import event_blueprint  # Import the event Blueprint
 from backend.users import user_blueprint  # Import the user Blueprint
 
 
