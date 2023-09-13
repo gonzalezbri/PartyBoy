@@ -1,0 +1,5 @@
+*.log  # Ignores all files with a .log extension.
+*.pyc  # Ignores all compiled Python files.
+__pycache__/  # Ignores the __pycache__ directory and its contents.
+# Virtual environment
+venv/
