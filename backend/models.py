@@ -29,3 +29,35 @@ class Event(db.Model):
 
     def __repr__(self):
         return f'<Event {self.name}>'
+    
+
+#This Guest model is a basic table with columns for id,name,email,event id, and event relationship.
+from backend import db
+
+class Guest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
+
+    event = db.relationship('Event', backref='guests')
+
+    def __repr__(self):
+        return f'<Guest {self.name}>'
+    
+
+#This feedbakc rating model is for users to put ratings on events
+from backend import db  # Import the SQLAlchemy instance
+from sqlalchemy.orm import relationship
+
+class Feedback(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    User_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
+    comment = db.Column(db.String(255))
+    
+    # Define a relationship to the user leaving the feedback
+    user = relationship("User", back_populates="feedback_given")
+    
+    def __repr__(self):
+        return f'<Feedback (ID: {self.id}, User: {self.user_id}, Rating: {self.rating})>'

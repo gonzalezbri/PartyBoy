@@ -5,7 +5,7 @@ from flask.cli import FlaskGroup
 from backend.models import db  # Import db from your models module
 from backend.events import event_blueprint  # Import the event Blueprint
 from backend.users import user_blueprint  # Import the user Blueprint
-
+from backend.guests import guest_blueprint  # Import the guest Blueprint
 
 app = Flask(__name__)
 
@@ -21,6 +21,10 @@ migrate = Migrate(app, db)
 # Register your Blueprint
 app.register_blueprint(event_blueprint, url_prefix='/api/event')
 app.register_blueprint(user_blueprint, url_prefix='/api/user')
+app.register_blueprint(guest_blueprint, url_prefix='/api/guest')
+
+
+
 
 cli = FlaskGroup(app)  # Use FlaskGroup to create and run CLI commands
 
