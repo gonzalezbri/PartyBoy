@@ -46,7 +46,7 @@ class Guest(db.Model):
         return f'<Guest {self.name}>'
     
 
-#This feedbakc rating model is for users to put ratings on events
+#This feedback rating model is for users to put ratings on events
 from backend import db  # Import the SQLAlchemy instance
 from sqlalchemy.orm import relationship
 
