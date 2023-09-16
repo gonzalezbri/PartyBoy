@@ -1,17 +1,21 @@
-import { DarkThemeToggle, Flowbite } from 'flowbite-react';
+import { Flowbite } from 'flowbite-react';
 import SlidingEvents from './components/Slideshow';
-import NavbarWithButton from './components/NavBar'
+import NavbarWithButton from './components/NavBar';
+import Home from './components/Home';
 
 function App() {
   return (
     <Flowbite>
-      <div className="container mx-auto">
-        <DarkThemeToggle/>
-        <NavbarWithButton/>
-        <SlidingEvents/>
+      <div className="">
+        <NavbarWithButton />
       </div>
+      <div className="mt-8">
+        <Home />
+        <SlidingEvents />
+      </div>
+      
     </Flowbite>
   );
-};
+}
 
 export default App;
