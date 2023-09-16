@@ -1,19 +1,17 @@
-import React from 'react';
-import Appbar from './modules/components/AppBar';
-import Theme from './modules/theme';
-import Home from './Home'
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import { DarkThemeToggle, Flowbite } from 'flowbite-react';
+import SlidingEvents from './components/Slideshow';
+import NavbarWithButton from './components/NavBar'
 
-const App = () => {
-    return (
-    <Theme>
-        <Appbar />
-        <Home />
-        <SignIn/>
-        <SignUp/>
-    </Theme>
-    );
+function App() {
+  return (
+    <Flowbite>
+      <div className="container mx-auto">
+        <DarkThemeToggle/>
+        <NavbarWithButton/>
+        <SlidingEvents/>
+      </div>
+    </Flowbite>
+  );
 };
 
-export default App
+export default App;
