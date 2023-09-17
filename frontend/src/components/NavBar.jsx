@@ -1,48 +1,51 @@
-
 import { Navbar } from 'flowbite-react';
-import img1 from '../assets/images/img1.jpg'
+import img1 from '../assets/images/img1.jpg';
+import { Link } from 'react-router-dom';
 
 export default function NavbarWithButton() {
-    const navbarStyles = {
-        background: '#D6A5D2',
-        zIndex: '1000', 
-    };
+  const navbarStyles = {
+    background: 'rgba(0, 0, 0, 0.5)',
+    //background: '#D6A5D2',
+    zIndex: '1000',
+  };
 
-    const linkStyles = {
-    color: 'white', // Change the link text color to white
-    };
+  //const linkStyles = {
+    //color: 'purple', style={linkStyles}
+  //};
 
-    return (
-    <Navbar  fluid rounded style={navbarStyles}>
-        <Navbar.Brand href="https://flowbite-react.com">
+  return (
+    <Navbar fluid rounded style={navbarStyles}>
+      <Navbar.Brand href="/">
         <img
-            alt="Flowbite React Logo"
-            className="mr-3 h-6 sm:h-9"
-            src={img1}
+          alt="Flowbite React Logo"
+          className="mr-3 h-6 sm:h-9"
+          src={img1}
         />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            PartyBoy
+        <span className="self-center tracking-wide whitespace-normal underline dark:text-white decoration-purple-500 text-4xl font-extrabold text-white">
+          PartyBoy
         </span>
-        </Navbar.Brand>
-        <div className="flex md:order-2">
+      </Navbar.Brand>
+      <div className="flex md:order-2">
         <Navbar.Toggle />
-        </div>
-        <Navbar.Collapse>
-        <Navbar.Link active href="#" style={linkStyles}>
-            <p>Home</p>
-        </Navbar.Link>
-        <Navbar.Link href="#" style={linkStyles}>
-            Create Event
-        </Navbar.Link>
-        <Navbar.Link href="#" style={linkStyles}>
-            Sign In
-        </Navbar.Link>
-        <Navbar.Link href="#" style={linkStyles}>
-            Sign Up
-        </Navbar.Link>
-        </Navbar.Collapse>
+      </div>
+      <Navbar.Collapse>
+        <Link to="/" className='text-2xl font-extrabold underline decoration-purple-500 text-white'>
+          <p>Home</p>
+        </Link>
+        <Link to="/create-event" className='text-2xl font-extrabold underline decoration-purple-500 text-white' >
+          Create Event
+        </Link>
+        <Link to="/signin" className='text-2xl font-extrabold underline decoration-purple-500 text-white' >
+          Sign In
+        </Link>
+        <Link to="/signup" className='text-2xl font-extrabold underline decoration-purple-500 text-white' >
+          Sign Up
+        </Link>
+      </Navbar.Collapse>
     </Navbar>
-    );
+  );
 }
+
+
 
 
