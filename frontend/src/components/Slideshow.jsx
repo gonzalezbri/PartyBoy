@@ -9,7 +9,7 @@ import img3 from '../assets/images/img3.jpg';
 import trevor from '../assets/images/trevor.jpg';
 
 export default function SlidingEvents() {
-  const settings = {
+    const settings = {
     dots: true,
     infinite: true,
     speed: 1000,
@@ -17,16 +17,16 @@ export default function SlidingEvents() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-  };
+};
 
-  return (
+    return (
     <Slider {...settings}>
-      <img alt="..." src={img1} />
-      <img alt="..." src={img2} />
-      <img alt="..." src={img3} />
-      <img alt="..." src={trevor} />
+        <img alt="..." src={img1} />
+        <img alt="..." src={img2} />
+        <img alt="..." src={img3} />
+        <img alt="..." src={trevor} />
     </Slider>
-  );
+    );
 }
 
 

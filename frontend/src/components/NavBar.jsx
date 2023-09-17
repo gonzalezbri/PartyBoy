@@ -4,7 +4,8 @@ import img1 from '../assets/images/img1.jpg'
 
 export default function NavbarWithButton() {
     const navbarStyles = {
-    background: '#D6A5D2', // Change the background color to the desired hex color
+        background: '#D6A5D2',
+        zIndex: '1000', 
     };
 
     const linkStyles = {
@@ -12,7 +13,7 @@ export default function NavbarWithButton() {
     };
 
     return (
-    <Navbar fluid rounded style={navbarStyles}>
+    <Navbar  fluid rounded style={navbarStyles}>
         <Navbar.Brand href="https://flowbite-react.com">
         <img
             alt="Flowbite React Logo"
@@ -31,13 +32,13 @@ export default function NavbarWithButton() {
             <p>Home</p>
         </Navbar.Link>
         <Navbar.Link href="#" style={linkStyles}>
+            Create Event
+        </Navbar.Link>
+        <Navbar.Link href="#" style={linkStyles}>
             Sign In
         </Navbar.Link>
         <Navbar.Link href="#" style={linkStyles}>
             Sign Up
-        </Navbar.Link>
-        <Navbar.Link href="#" style={linkStyles}>
-            Contact
         </Navbar.Link>
         </Navbar.Collapse>
     </Navbar>
