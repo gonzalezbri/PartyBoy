@@ -56,9 +56,11 @@ function SignIn() {
         <div style={overlayStyles}>
 
         <form className="flex flex-col gap-4" style={formStyles}>
-            <div class="mx-auto max-w-screen-xl text-center lg:py-10">
+            <div class="mx-auto max-w-screen-xl text-center lg:py-8">
                 <h1 class="mb-4 text-4xl font-extrabold tracking-normal leading-none text-gray-900 md:text-5xl lg:text-6xl text-white" >Sign Up</h1>
             </div>
+            <div className='text-xl tracking-normal font-bold text-white'>Already a Bro? <a href="/signin" className="text-blue-100 hover:text-purple-400 underline">Sign In Brah!</a>
+</div>
             <div>
             <div className="mb-2 block"><Label htmlFor="user" className='text-xl tracking-normal font-bold text-white' value='Create Username'></Label></div>
             <TextInput
@@ -66,7 +68,7 @@ function SignIn() {
                 id="user"
                 placeholder="PartyBoy"
                 required
-                type="user"
+                type="text"
                 style={inputStyles} 
             />
             <div className="mb-2 block" ><Label htmlFor="email2" className='text-xl tracking-normal font-bold text-white' value="Your email" /></div>

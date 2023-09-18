@@ -21,7 +21,7 @@ export default function NavbarWithButton() {
           className="mr-3 h-6 sm:h-9"
           src={img1}
         />
-        <span className="self-center tracking-wide whitespace-normal underline dark:text-white decoration-purple-500 text-4xl font-extrabold text-white">
+        <span className="self-center tracking-wide whitespace-normal underline dark:text-white decoration-pink-300 text-5xl font-extrabold text-white hover:text-purple-400">
           PartyBoy
         </span>
       </Navbar.Brand>
@@ -29,16 +29,16 @@ export default function NavbarWithButton() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Link to="/" className='text-2xl font-extrabold underline decoration-purple-500 text-white'>
+        <Link to="/" className='text-2xl font-extrabold underline decoration-pink-300 text-white hover:text-purple-400'>
           <p>Home</p>
         </Link>
-        <Link to="/create-event" className='text-2xl font-extrabold underline decoration-purple-500 text-white' >
+        <Link to="/create-event" className='text-2xl font-extrabold underline decoration-pink-300 text-white hover:text-purple-400' >
           Create Event
         </Link>
-        <Link to="/signin" className='text-2xl font-extrabold underline decoration-purple-500 text-white' >
+        <Link to="/signin" className='text-2xl font-extrabold underline decoration-pink-300 text-white hover:text-purple-400' >
           Sign In
         </Link>
-        <Link to="/signup" className='text-2xl font-extrabold underline decoration-purple-500 text-white' >
+        <Link to="/signup" className='text-2xl font-extrabold underline decoration-pink-300 text-white hover:text-purple-400' >
           Sign Up
         </Link>
       </Navbar.Collapse>

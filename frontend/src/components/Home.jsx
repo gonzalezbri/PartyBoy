@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'flowbite-react';
 import backgroundImage from '../assets/images/background1.png';
 import img2 from '../assets/images/img2.jpg';
@@ -53,11 +54,12 @@ function Home() {
       <img src={img2} alt="" style={imageStyles} />
       <div className="py-8 px-4 mx-auto text-center lg:py-16" style={overlayStyles}>
         <h1 className="mb-4 text-2xl font-extrabold tracking-normal leading-none text-white md:text-2xl lg:text-3xl text-white">
-          Click the button below to create your event!
+          Click the button below brah!
         </h1>
+        <Link to="/signup" >
         <Button size="xl" gradientDuoTone="purpleToPink" className="mb-4 text-2xl font-bold" style={buttonStyles}>
           Let's Party
-        </Button>
+        </Button></Link>
       </div>
     </div>
   );
