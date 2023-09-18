@@ -1,9 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import backgroundImage from '../assets/images/background1.png';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { FiMail, FiSmile, FiUser } from 'react-icons/fi';
 
-function SignIn() {
+function SignUp() {
+
+    const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    repeatPassword: '',
+    });
+      // Function to handle form submission
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Send a POST request to your Flask backend
+      const response = await fetch('/api/user/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData), // Send user data as JSON
+      });
+
+      if (response.status === 201) {
+        // User created successfully, handle the success
+        console.log('User created successfully');
+        // Redirect or show a success message
+      } else {
+        // Handle error responses
+        const errorData = await response.json(); // Parse error JSON data
+        console.error('Error creating user:', errorData.error);
+        // Display error message to the user
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
     const containerStyles = {
     position: 'relative',
     minHeight: '100vh',
@@ -55,7 +91,7 @@ function SignIn() {
         <div style={backgroundStyles}></div>
         <div style={overlayStyles}>
 
-        <form className="flex flex-col gap-4" style={formStyles}>
+        <form className="flex flex-col gap-4" style={formStyles} onSubmit={handleSubmit}>
             <div class="mx-auto max-w-screen-xl text-center lg:py-8">
                 <h1 class="mb-4 text-4xl font-extrabold tracking-normal leading-none text-gray-900 md:text-5xl lg:text-6xl text-white" >Sign Up</h1>
             </div>
@@ -98,12 +134,14 @@ function SignIn() {
             <Label htmlFor="repeat-password" className='text-xl tracking-normal font-bold text-white' value="Confirm password"/>
         </div>
             <TextInput
-            id="repeat-password"
+            name="repeatPassword"
             icon={FiSmile}
             placeholder="Password"
             required
             shadow
-            type="password" />
+            type="password"
+            value={formData.repeatPassword}
+            onChange={handleChange} />
             </div>
             <div className="flex items-center gap-2">
             <Checkbox id="remember" />
@@ -116,4 +154,4 @@ function SignIn() {
     );
 }
 
-export default SignIn;
+export default SignUp;
