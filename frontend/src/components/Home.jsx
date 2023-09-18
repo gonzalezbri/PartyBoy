@@ -51,8 +51,8 @@ function Home() {
   return (
     <div style={containerStyles}>
       <div style={backgroundStyles} />
-      <img src={img2} alt="" style={imageStyles} />
-      <div className="py-8 px-4 mx-auto text-center lg:py-16" style={overlayStyles}>
+      <img className='mt-10 mb-40' src={img2} alt="" style={imageStyles} />
+      <div className="mt-40 py-8 px-4 mx-auto text-center lg:py-16" style={overlayStyles}>
         <h1 className="mb-4 text-2xl font-extrabold tracking-normal leading-none text-white md:text-2xl lg:text-3xl text-white">
           Click the button below brah!
         </h1>
@@ -62,6 +62,7 @@ function Home() {
         </Button></Link>
       </div>
     </div>
+    
   );
 }
 

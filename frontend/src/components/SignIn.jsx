@@ -83,9 +83,9 @@ function SignIn() {
             </div>
             <div className="flex items-center gap-2">
             <Checkbox id="remember" />
-            <Label htmlFor="remember">Remember me</Label>
+            <Label className='text-m tracking-normal font-normal text-white' htmlFor="remember">Remember me Brah</Label>
             </div>
-            <Button gradientDuoTone="purpleToPink" className="mb-4 text-2xl font-bold" type="submit">Submit</Button>
+            <Button gradientDuoTone="purpleToPink" className="mb-4 text-1xl font-bold" type="submit">Sign In</Button>
         </form>
         </div>
     </div>
