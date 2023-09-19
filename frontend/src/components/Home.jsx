@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'flowbite-react';
 import backgroundImage from '../assets/images/background1.png';
-import img2 from '../assets/images/img2.jpg';
+import whitefill from '../assets/images/whitefill.png';
 
 function Home() {
   const containerStyles = {
@@ -44,15 +44,16 @@ function Home() {
     width: '200px',
   };
 
-  const imageStyles = {
-    width: '10%',
-  };
 
   return (
+    <div>
     <div style={containerStyles}>
       <div style={backgroundStyles} />
-      <img className='mt-10 mb-40' src={img2} alt="" style={imageStyles} />
-      <div className="mt-40 py-8 px-4 mx-auto text-center lg:py-16" style={overlayStyles}>
+      <img className='!mt-[-40]' src={whitefill} alt="" rotate style={{ width: '25%', marginTop: '-100px', animation: 'spin 20s linear infinite', transformOrigin: 'center', }} />
+      <span className="self-center tracking-wide whitespace-normal underline dark:text-white decoration-pink-300 text-9xl font-extrabold text-white" style={{ marginTop: '-40px', textShadow: '2px 4px 10px rgba(0, 0, 0, 0.75)' }}>
+          PartyBoy
+        </span>
+      <div className="mt-20 py-8 px-4 mx-auto text-center lg:py-16" style={overlayStyles}>
         <h1 className="mb-4 text-2xl font-extrabold tracking-normal leading-none text-white md:text-2xl lg:text-3xl text-white">
           Click the button below brah!
         </h1>
@@ -60,10 +61,11 @@ function Home() {
         <Button size="xl" gradientDuoTone="purpleToPink" className="mb-4 text-2xl font-bold" style={buttonStyles}>
           Let's Party
         </Button></Link>
+        </div>
       </div>
-    </div>
-    
+      </div>
   );
 }
+
 
 export default Home;

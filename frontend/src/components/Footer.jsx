@@ -1,5 +1,5 @@
 import { Footer } from 'flowbite-react';
-import img1 from '../assets/images/img1.jpg';
+import logowhite from '../assets/images/logowhite.png';
 
 export default function FooterWithLogo() {
     const navbarStyles = {
@@ -14,7 +14,8 @@ export default function FooterWithLogo() {
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
             <Footer.Brand alt="PartyBoy Logo"
             href="/"
-            src={img1}>
+            className='mx-10 scale-150'
+            src={logowhite}>
                 <span className="self-center tracking-wide whitespace-normal underline decoration-pink-300 text-3xl font-extrabold text-pink-100/50 hover:text-purple-400">PartyBoy</span>
             </Footer.Brand>
             

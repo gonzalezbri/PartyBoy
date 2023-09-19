@@ -1,5 +1,5 @@
 import { Navbar } from 'flowbite-react';
-import img1 from '../assets/images/img1.jpg';
+import logowhite from '../assets/images/logowhite.png';
 import { Link } from 'react-router-dom';
 
 export default function NavbarWithButton() {
@@ -17,9 +17,10 @@ export default function NavbarWithButton() {
     <Navbar fluid rounded style={navbarStyles}>
       <Navbar.Brand href="/">
         <img
-          alt="Flowbite React Logo"
-          className="mr-3 h-6 sm:h-9"
-          src={img1}
+          alt="Logo"
+          className="mr-5 h-6 sm:h-9 scale-150"
+          src={logowhite}
+
         />
         <span className="self-center tracking-wide whitespace-normal underline dark:text-white decoration-pink-300 text-5xl font-extrabold text-white hover:text-purple-400">
           PartyBoy

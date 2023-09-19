@@ -3,3 +3,4 @@
 __pycache__/  # Ignores the __pycache__ directory and its contents.
 # Virtual environment
 venv/
+.env

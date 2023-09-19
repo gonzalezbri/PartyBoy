@@ -1,6 +1,6 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, Text, DateTime
-from backend import db
+from sqlalchemy import Column, Integer, String, Text, DateTime, Date
+from backend.database import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,5 +16,6 @@ class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     event_name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    event_date = db.Column(db.Date, nullable=False)
+    event_date = db.Column(Date, nullable=False)
     flyer_url = db.Column(db.String(255), nullable=False)
+

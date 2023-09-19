@@ -1,7 +1,8 @@
+from backend.auth import User  # Move this import to the top of events.py
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from .models import Event, User 
-from . import db
+from backend.models import Event
+from backend.database import db  # Import db from database.py
 
 events_bp = Blueprint("events", __name__, url_prefix="/api/events")
 
@@ -38,7 +39,6 @@ def create_event():
 
     except Exception as e:
         return jsonify({"message": "Error creating event", "error": str(e)}), 500
-
 
 # route for fetching all events
 @events_bp.route("/", methods=["GET"])

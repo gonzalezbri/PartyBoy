@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Flowbite>
-        <div className="">
+        <div>
           <NavbarWithButton />
           <Routes>
             <Route
