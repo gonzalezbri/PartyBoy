@@ -55,7 +55,7 @@ function Home() {
         </span>
       <div className="mt-20 py-8 px-4 mx-auto text-center lg:py-16" style={overlayStyles}>
         <h1 className="mb-4 text-2xl font-extrabold tracking-normal leading-none text-white md:text-2xl lg:text-3xl text-white">
-          Click the button below brah!
+          Click the button below to get started brah!
         </h1>
         <Link to="/signup" >
         <Button size="xl" gradientDuoTone="purpleToPink" className="mb-4 text-2xl font-bold" style={buttonStyles}>

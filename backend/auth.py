@@ -3,7 +3,7 @@ from flask_bcrypt import bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
 from backend.models import User
-from backend.database import db  # Import db from database.py
+
 
 auth_blueprint = Blueprint('auth', __name__)
 

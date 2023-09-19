@@ -1,4 +1,4 @@
-from backend.auth import User  # Move this import to the top of events.py
+from backend.auth import User 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from backend.models import Event
