@@ -1,20 +1,34 @@
 import os
 
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
 class Config:
-    # SQLAlchemy database URI for PostgreSQL
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:4717@localhost/partydb'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False  # Disable SQLAlchemy track modifications
+
+    # Configure JWT settings
+    JWT_SECRET_KEY = 'your-secret-key'  # Replace with a strong, unique secret key
+    JWT_TOKEN_LOCATION = ['headers', 'cookies']
+    JWT_COOKIE_CSRF_PROTECT = False  # Disable CSRF protection for cookies (use it only in trusted environments)
+    JWT_ACCESS_TOKEN_EXPIRES = False  # Set to True to enable access token expiration
+    JWT_REFRESH_TOKEN_EXPIRES = False  # Set to True to enable refresh token expiration
+
+    # Enable cross-origin resource sharing (CORS) for your frontend's URL
+    CORS_ORIGINS = ['http://localhost:3000']  # Replace with your frontend's URL
+
+class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:4717@localhost/parties'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False  # Disable tracking modifications
+    ENV = 'development'
 
-    # Other configuration options (if needed)
-    SECRET_KEY = 'possible_secret_key_here'
+class ProductionConfig(Config):
+    DEBUG = False
+    ENV = 'production'
 
+config_by_name = {
+    'development': DevelopmentConfig,
+    'production': ProductionConfig,
+}
 
-# Additional configuration settings will go here
-
-    # Flask-Mail configuration for sending email (if needed)
-    # MAIL_SERVER = 'smtp.example.com'
-    # MAIL_PORT = 587
-    # MAIL_USE_TLS = True
-    # MAIL_USERNAME = 'your_username'
-    # MAIL_PASSWORD = 'your_password'
+# Set the current configuration based on the environment variable
+FLASK_ENV = os.environ.get('FLASK_ENV', 'development')
+config = config_by_name[FLASK_ENV]

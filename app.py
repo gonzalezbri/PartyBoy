@@ -1,40 +1,29 @@
+# app.py
+
 from flask import Flask
-from config import Config
-from flask_migrate import Migrate
-from flask.cli import FlaskGroup
-from backend.models import db  # Import db from your models module
-from backend.events import event_blueprint  # Import the event Blueprint
-from backend.users import user_blueprint  # Import the user Blueprint
-from backend.guests import guest_blueprint  # Import the guest Blueprint
-from backend.feedback import feedback_blueprint
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
+from config import config
 
 app = Flask(__name__)
+app.config.from_object(config)
 
-# Load configuration from config.py
-app.config.from_object(Config)
+# Configure PostgreSQL database URI before initializing extensions
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:4717@localhost/partydb'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize the SQLAlchemy database
-db.init_app(app)
+# Initialize extensions
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+jwt = JWTManager(app)
 
-# Initialize the Flask-Migrate extension
-migrate = Migrate(app, db)
+# Import and register blueprints
+from backend.auth import auth_blueprint
+from backend.events import events_bp  # Correct the blueprint name
 
-# Register your Blueprint
-app.register_blueprint(event_blueprint, url_prefix='/api/event')
-app.register_blueprint(user_blueprint, url_prefix='/api/user')
-app.register_blueprint(guest_blueprint, url_prefix='/api/guest')
-app.register_blueprint(feedback_blueprint, url_prefix='/api/feedback')
-
-
-
-
-cli = FlaskGroup(app)  # Use FlaskGroup to create and run CLI commands
+app.register_blueprint(auth_blueprint)
+app.register_blueprint(events_bp, url_prefix='/events')
 
 if __name__ == '__main__':
-    cli()
-
-
-
-
-
-
+    app.run(debug=True)
