@@ -8,7 +8,7 @@ from backend.database import db  # Import db from backend.database
 bcrypt = Bcrypt()
 jwt = JWTManager()
 
-def create_app(config_name):
+def create_app(config_name=None):
     app = Flask(__name__)
     app.config.from_object(Config)
     

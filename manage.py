@@ -1,14 +1,15 @@
-from flask_migrate import Migrate, MigrateCommand
-from flask.cli import FlaskGroup
+from flask_migrate import Migrate
 from app import create_app, db
+from flask.cli import FlaskGroup
 
 app = create_app('development')
-cli = FlaskGroup(create_app=create_app)
+cli = FlaskGroup(create_app=lambda: app)
 
 migrate = Migrate(app, db)
-cli.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
     cli()
+
+
 
 
