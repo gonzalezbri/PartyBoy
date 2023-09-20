@@ -3,12 +3,23 @@ from flask_bcrypt import bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
 from backend.models import User
+from flask_cors import CORS
+from backend.database import db
 
 
 auth_blueprint = Blueprint('auth', __name__)
+CORS(auth_blueprint, resources={r"/auth/*": {"origins": "http://localhost:3000"}})
 
-@auth_blueprint.route('/signup', methods=['POST'])
+@auth_blueprint.route('/signup', methods=['POST', 'OPTIONS'])
 def signup():
+    if request.method == 'OPTIONS':
+        # Handle preflight request
+        response = jsonify({'message': 'Preflight request accepted'})
+        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        return response, 200
+
     try:
         data = request.get_json()
 
@@ -44,3 +55,5 @@ def signup():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+

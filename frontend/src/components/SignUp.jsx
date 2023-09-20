@@ -4,20 +4,20 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { FiMail, FiSmile, FiUser } from 'react-icons/fi';
 
 function SignUp() {
-
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
     repeatPassword: '',
-    });
-      // Function to handle form submission
-    const handleSubmit = async (e) => {
+  });
+
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       // Send a POST request to your Flask backend
-      const response = await fetch('/api/user/users', {
+      const response = await fetch('http://127.0.0.1:5000/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,6 +39,12 @@ function SignUp() {
       console.error('Error:', error);
     }
   };
+
+  // Function to handle form field changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    };
 
     const containerStyles = {
     position: 'relative',
@@ -121,28 +127,32 @@ function SignUp() {
               <div className="mb-2 block">
             <Label htmlFor="password2" className='text-xl tracking-normal font-bold text-white ' value="Your password" /></div>
             <TextInput
-                id="password2"
-                icon={FiSmile}
-                placeholder="Password"
-                required
-                type="password"
-                style={inputStyles} 
-            />
+            icon={FiSmile}
+            id="password2"
+            name="password"  // Make sure the field name matches the backend
+            placeholder="Password"
+            required
+            type="password"
+            style={inputStyles}
+            value={formData.password}  // Bind to the state
+            onChange={handleChange}    // Handle changes
+          />
             </div>
             <div>
             <div className="mb-2 block">
             <Label htmlFor="repeat-password" className='text-xl tracking-normal font-bold text-white' value="Confirm password"/>
         </div>
-            <TextInput
-            name="repeatPassword"
+        <TextInput
             icon={FiSmile}
+            id="repeat-password"
+            name="repeatPassword"
             placeholder="Password"
             required
             shadow
             type="password"
-            value={formData.repeatPassword}
-            //onChange={handleChange} 
-            />
+            value={formData.repeatPassword}  // Bind to the state
+            onChange={handleChange}    // Handle changes
+          />
             </div>
             <div className="flex items-center gap-2">
             <Checkbox id="remember" />

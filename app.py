@@ -3,6 +3,7 @@ from config import Config
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from decouple import config as decouple_config
+from flask_cors import CORS  # Import Flask-CORS
 from backend.database import db  # Import db from backend.database
 
 bcrypt = Bcrypt()
@@ -19,6 +20,15 @@ def create_app(config_name=None):
     bcrypt.init_app(app)
     jwt.init_app(app)
 
+    CORS(
+    app,
+    supports_credentials=True,
+    resources={r"/*": {"origins": "http://localhost:3000"}},
+    methods=["OPTIONS", "POST", "GET", "PUT", "DELETE"],
+    allow_headers=["Content-Type", "Authorization"],
+)
+
+
     # Import and register blueprints
     from backend.auth import auth_blueprint
     from backend.events import events_bp
@@ -31,3 +41,4 @@ def create_app(config_name=None):
 if __name__ == '__main__':
     app = create_app('development')
     app.run(debug=True)
+
