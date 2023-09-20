@@ -47,7 +47,11 @@ export default function CenteredCarousel() {
 
   return (
     <div className="flex flex-col items-center">
+      <div className="flex items-center">
       <img src={standing} alt="standing party boy" style={standingImageStyles} />
+      <img src={standing} alt="standing party boy" style={standingImageStyles} />
+      <img src={standing} alt="standing party boy" style={standingImageStyles} />
+      </div>
       <hr style={dividerStyles} />
       <span className="tracking-wide whitespace-normal underline dark:text-white decoration-pink-300 text-4xl font-bold text-white" style={{ marginTop: '-40px', textShadow: '2px 4px 10px rgba(0, 0, 0, 0.75)' }}>
         Will You Be There?
