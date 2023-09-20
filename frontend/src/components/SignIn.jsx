@@ -1,5 +1,6 @@
 import React from 'react';
 import backgroundImage from '../assets/images/background1.png';
+import standing from '../assets/images/standing.png'
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { FiMail, FiSmile } from 'react-icons/fi';
 
@@ -50,6 +51,11 @@ function SignIn() {
     marginBottom: '10px',
     };
 
+    const standingImageStyles = {
+        width: '200px', 
+        height: 'auto',
+        };
+
     return (
     <div style={containerStyles}>
         <div style={backgroundStyles}></div>
@@ -88,6 +94,7 @@ function SignIn() {
             <Button gradientDuoTone="purpleToPink" className="mb-4 text-1xl font-bold" type="submit">Sign In</Button>
         </form>
         </div>
+        <img src={standing} alt="standing party boy" style={standingImageStyles} />
     </div>
     );
 }

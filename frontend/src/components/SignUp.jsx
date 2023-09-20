@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import backgroundImage from '../assets/images/background1.png';
+import standing from '../assets/images/standing.png'
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { FiMail, FiSmile, FiUser } from 'react-icons/fi';
 
@@ -79,8 +80,8 @@ function SignUp() {
     justifyContent: 'center',
     textAlign: 'center',
     width: '100%',
-    maxWidth: '400px', // Adjust the max width to preference
-    margin: '0 auto', // Center form horizontally
+    maxWidth: '400px', 
+    margin: '0 auto', 
     };
 
     const formStyles = {
@@ -91,6 +92,10 @@ function SignUp() {
     width: '100%',
     marginBottom: '10px',
     };
+    const standingImageStyles = {
+      width: '200px', 
+      height: 'auto',
+      };
 
     return (
     <div style={containerStyles}>

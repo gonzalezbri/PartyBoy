@@ -8,6 +8,7 @@ import Party4 from '../assets/images/Party4.png';
 import Party5 from '../assets/images/Party5.png';
 import Party6 from '../assets/images/Party6.png';
 import Party7 from '../assets/images/Party7.png';
+import standing from '../assets/images/standing.png'
 
 const sliderImages = [Party1, Party2, Party3, Party4, Party5, Party6, Party7];
 
@@ -38,9 +39,15 @@ export default function CenteredCarousel() {
     background:'#D6A5D2',
     margin: '40px 0', // Adjust the margin as needed
   };
+  const standingImageStyles = {
+    width: '400px', 
+    height: 'auto',
+    };
+
 
   return (
     <div className="flex flex-col items-center">
+      <img src={standing} alt="standing party boy" style={standingImageStyles} />
       <hr style={dividerStyles} />
       <span className="tracking-wide whitespace-normal underline dark:text-white decoration-pink-300 text-4xl font-bold text-white" style={{ marginTop: '-40px', textShadow: '2px 4px 10px rgba(0, 0, 0, 0.75)' }}>
         Will You Be There?
