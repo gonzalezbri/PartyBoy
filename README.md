@@ -23,7 +23,7 @@ Visit my website at **COMING SOON**.
 
 3. When the user uploads Events to the Home Page only signed in users will be able to view the events (upcoming) Thank you for viewing Party Boy!
 
-![GIF](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/manuever.gif)
+![GIF](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/maneuver.gif)
 
 ## License
 
