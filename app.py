@@ -1,40 +1,68 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from config import Config
-from flask_migrate import Migrate
-from flask.cli import FlaskGroup
-from backend.models import db  # Import db from your models module
-from backend.events import event_blueprint  # Import the event Blueprint
-from backend.users import user_blueprint  # Import the user Blueprint
-from backend.guests import guest_blueprint  # Import the guest Blueprint
-from backend.feedback import feedback_blueprint
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
+from decouple import config as decouple_config
+from flask_cors import CORS
+from backend.database import db
+from flask_login import LoginManager
+import os
+
+bcrypt = Bcrypt()
+jwt = JWTManager()
+login_manager = LoginManager()
+
+@login_manager.user_loader
+def load_user(user_id):
+    from backend.models import User  # Import your User model
+    return User.query.get(int(user_id))
 
 app = Flask(__name__)
 
-# Load configuration from config.py
-app.config.from_object(Config)
 
-# Initialize the SQLAlchemy database
-db.init_app(app)
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_frontend(path):
+    if path != "" and os.path.exists("frontend/build/" + path):
+        return send_from_directory("frontend/build", path)
+    else:
+        return send_from_directory("frontend/build", 'index.html')
 
-# Initialize the Flask-Migrate extension
-migrate = Migrate(app, db)
+def create_app(config_name=None):
+    app = Flask(__name__)
+    app.config.from_object(Config)
+    
+    # Loading the JWT_SECRET_KEY from the environment using Python Decouple
+    app.config['JWT_SECRET_KEY'] = decouple_config('JWT_SECRET_KEY')
 
-# Register your Blueprint
-app.register_blueprint(event_blueprint, url_prefix='/api/event')
-app.register_blueprint(user_blueprint, url_prefix='/api/user')
-app.register_blueprint(guest_blueprint, url_prefix='/api/guest')
-app.register_blueprint(feedback_blueprint, url_prefix='/api/feedback')
+    db.init_app(app)
+    bcrypt.init_app(app)
+    jwt.init_app(app)
 
+    CORS(
+        app,
+        supports_credentials=True,  # Allow cookies and credentials to be sent
+        resources={
+            r"/auth/*": {"origins": "http://localhost:3000"},  # Replace with your frontend URL
+        },
+        methods=["OPTIONS", "POST", "GET", "PUT", "DELETE"],  
+        allow_headers=["Content-Type", "Authorization"],  
+    )
 
+    login_manager.login_view = "auth.login" 
+    login_manager.init_app(app)
 
+    # Import and register blueprints
+    from backend.auth import auth_blueprint
+    from backend.events import events_bp
 
-cli = FlaskGroup(app)  # Use FlaskGroup to create and run CLI commands
+    app.register_blueprint(auth_blueprint)
+    app.register_blueprint(events_bp, url_prefix='/events')
+
+    return app
 
 if __name__ == '__main__':
-    cli()
-
-
-
-
+    app = create_app('development')
+    app.run(debug=True)
 
 
