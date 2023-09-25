@@ -1,5 +1,7 @@
 ---
-![Image](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/images/whitefill.png)
+title: PartyBoy
+description: Fullstack event management project built with Python, Flask, React, Tailwind, and Flowbite.
+---
 
 # PartyBoy
 
@@ -9,6 +11,8 @@ This project is a fullstack event management. It is built with the following tec
 
 Here's the Home Page:
 Visit my website at **COMING SOON**.
+
+![Image](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/images/whitefill.png)
 
 ![Image](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/homepic.png)
 
@@ -25,9 +29,6 @@ Visit my website at **COMING SOON**.
 
 ![GIF](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/manuever.gif)
 
-
-
 ## License
 
 This project is licensed under the [MIT License]([link to MIT License]).
----
