@@ -5,7 +5,7 @@
 
 This project is a fullstack event management. It is built with the following technologies:
 
-* [Python, Flask, React, Tailwind, Flowbite]
+[Python, Flask, React, Tailwind, Flowbite]
 
 Here's the Home Page:
 Visit my website at **COMING SOON**.
