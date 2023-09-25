@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import backgroundImage from '../assets/images/background1.png';
-import standing from '../assets/images/standing.png'
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { FiMail, FiSmile, FiUser } from 'react-icons/fi';
 
@@ -12,10 +11,44 @@ function SignUp() {
     repeatPassword: '',
   });
 
-  // Function to handle form submission
+  const [errors, setErrors] = useState({}); // Store validation errors
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submit button clicked');
 
+    // Client-side validation
+    const validationErrors = {};
+
+    if (!formData.username) {
+      validationErrors.username = 'Username is required';
+    }
+
+    if (!formData.email) {
+      validationErrors.email = 'Email is required';
+    } else if (!isValidEmail(formData.email)) {
+      validationErrors.email = 'Invalid email format';
+    }
+
+    if (!formData.password) {
+      validationErrors.password = 'Password is required';
+    } else if (formData.password.length < 4) {
+      validationErrors.password = 'Password must be at least 4 characters';
+    }
+
+    if (formData.password !== formData.repeatPassword) {
+      validationErrors.repeatPassword = 'Passwords do not match';
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return; // Don't submit if there are validation errors
+    }
+
+    // Clear any previous validation errors
+    setErrors({});
+
+    // Proceed with form submission to the server
     try {
       // Send a POST request to your Flask backend
       const response = await fetch('http://127.0.0.1:5000/auth/signup', {
@@ -23,29 +56,29 @@ function SignUp() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData), // Send user data as JSON
+        body: JSON.stringify(formData),
       });
-
+  
       if (response.status === 201) {
-        // User created successfully, handle the success
         console.log('User created successfully');
         // Redirect or show a success message
       } else {
-        // Handle error responses
-        const errorData = await response.json(); // Parse error JSON data
+        const errorData = await response.json();
         console.error('Error creating user:', errorData.error);
-        // Display error message to the user
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
-  // Function to handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    };
+  };
+
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
     const containerStyles = {
     position: 'relative',
