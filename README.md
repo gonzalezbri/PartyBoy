@@ -5,10 +5,6 @@ description: Fullstack event management project built with Python, Flask, React,
 
 # PartyBoy
 
-This project is a fullstack event management. It is built with the following technologies:
-
-[Python, Flask, React, Tailwind, Flowbite]
-
 Here's the Home Page:
 Visit my website at **COMING SOON**.
 
@@ -31,4 +27,4 @@ Visit my website at **COMING SOON**.
 
 ## License
 
-This project is licensed under the [MIT License]([link to MIT License]).
+This project is licensed under the [MIT License].
