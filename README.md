@@ -6,7 +6,7 @@ description: Fullstack event management project built with Python, Flask, React,
 # PartyBoy
 
 Here's the Home Page:
-Visit my website at **COMING SOON**.
+Visit my website at **https://party-boy.vercel.app/**.
 
 ![Image](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/images/whitefill.png)
 
