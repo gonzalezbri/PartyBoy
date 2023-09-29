@@ -14,10 +14,6 @@ Visit my website at **https://party-boy.vercel.app/**.
 
 ## How to use the site
 
-<!-- Centered and Larger GIF -->
-<div style="text-align:center;">
-  <img src="https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/home.gif" alt="GIF" style="max-width:500px;">
-</div>
 
 1. Once on the Home Page, navigate to the "Let's Party Button" to take you to the Sign Up page
 ![Image](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/startpic.png)
