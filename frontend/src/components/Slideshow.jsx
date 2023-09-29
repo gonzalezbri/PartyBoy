@@ -8,7 +8,7 @@ import Party4 from '../assets/images/Party4.png';
 import Party5 from '../assets/images/Party5.png';
 import Party6 from '../assets/images/Party6.png';
 import Party7 from '../assets/images/Party7.png';
-import standing from '../assets/images/standing.png'
+import standing from '../assets/images/standing.png';
 
 const sliderImages = [Party1, Party2, Party3, Party4, Party5, Party6, Party7];
 
@@ -20,7 +20,6 @@ const Slide = ({ image }) => {
     boxShadow: '4px 2px 10px rgba(0, 0, 0, 0.75)',
     borderRadius: '15px',
   };
-  
 
   return (
     <div style={{ flex: '0 0 33.33%', transition: 'transform 0.3s ease' }}>
@@ -32,28 +31,61 @@ const Slide = ({ image }) => {
 export default function CenteredCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-
   const dividerStyles = {
     width: '00px',
     height: '2px',
-    background:'#D6A5D2',
-    margin: '40px 0', // Adjust the margin as needed
+    background: '#D6A5D2',
+    margin: '40px 0',
   };
-  const standingImageStyles = {
-    width: '400px', 
-    height: 'auto',
-    };
 
+  const standingImageStyles = {
+    width: '600px', // Initial width for larger screens
+    height: 'auto',
+  };
+
+  const mobileStyles = {
+    width: '25%', // 15% of their original size for mobile screens
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    animation: 'dance 1s ease-in-out infinite alternate', // Added the dance animation
+  };
 
   return (
     <div className="flex flex-col items-center">
       <div className="flex items-center">
-      <img src={standing} alt="standing party boy" style={standingImageStyles} />
-      <img src={standing} alt="standing party boy" style={standingImageStyles} />
-      <img src={standing} alt="standing party boy" style={standingImageStyles} />
+        <img
+          src={standing}
+          alt="standing party boy"
+          style={{
+            ...standingImageStyles,
+            ...mobileStyles,
+          }}
+          className="animate-dance" // animation class here
+        />
+        <img
+          src={standing}
+          alt="standing party boy"
+          style={{
+            ...standingImageStyles,
+            ...mobileStyles,
+          }}
+          className="animate-dance" // animation class here
+        />
+        <img
+          src={standing}
+          alt="standing party boy"
+          style={{
+            ...standingImageStyles,
+            ...mobileStyles,
+          }}
+          className="animate-dance" // animation class here
+        />
       </div>
       <hr style={dividerStyles} />
-      <span className="tracking-wide whitespace-normal underline dark:text-white decoration-pink-300 text-4xl font-bold text-white" style={{ marginTop: '-40px', textShadow: '2px 4px 10px rgba(0, 0, 0, 0.75)' }}>
+      <span
+        className="tracking-wide whitespace-normal underline dark:text-white decoration-pink-300 text-4xl font-bold text-white"
+        style={{ marginTop: '-40px', textShadow: '2px 4px 10px rgba(0, 0, 0, 0.75)' }}
+      >
         Will You Be There?
       </span>
       <hr style={dividerStyles} />
@@ -70,6 +102,21 @@ export default function CenteredCarousel() {
           ))}
         </Carousel>
       </div>
+      <style>
+        {`
+          @keyframes dance {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-20px);
+            }
+          }
+          .animate-dance {
+            animation: dance 1s ease-in-out infinite alternate;
+          }
+        `}
+      </style>
     </div>
   );
 }
