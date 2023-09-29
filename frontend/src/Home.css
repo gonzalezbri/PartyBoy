@@ -1,0 +1,52 @@
+/* Default styles for larger screens */
+.container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    }
+
+  /* Styles for the PartyBoy logo */
+.partyboy-logo {
+    text-align: center;
+    }
+
+.partyboy-logo img {
+    width: 25%;
+    margin: 0 auto; /* Center the image horizontally */
+    animation: spin 20s linear infinite;
+    transform-origin: center;
+    }
+
+.partyboy-text {
+    font-size: 9rem;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.75);
+    }
+
+  /* Styles for the button */
+.container .flowbite-button {
+    width: 200px;
+    font-size: 1.25rem;
+    }
+
+  /* Media query for smaller screens */
+    @media (max-width: 768px) {
+    /* Adjust the PartyBoy logo for smaller screens */
+    .partyboy-logo img {
+        width: 15%;
+    }
+
+    .partyboy-text {
+        font-size: 5rem;
+    }
+
+    /* Adjust the button styles for smaller screens */
+    .container .flowbite-button {
+        width: 150px;
+        font-size: 1rem;
+    }
+}

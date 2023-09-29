@@ -13,7 +13,7 @@ Visit my website at **COMING SOON**.
 ![Image](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/homepic.png)
 
 ## How to use the site
-![GIF](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/home.gif)
+![GIF](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/home)
 
 1. Once on the Home Page, navigate to the "Let's Party Button" to take you to the Sign Up page
 ![Image](https://github.com/gonzalezbri/PartyBoy/blob/main/frontend/src/assets/projectGifs/startpic.png)
